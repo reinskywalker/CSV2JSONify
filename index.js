@@ -77,14 +77,14 @@ exports.hexEncoding = function () {
   return this;
 };
 
-exports.generateJsonFileFromCsv = function(inputFileName, outputFileName) {
+exports.generate = function(inputFileName, outputFileName) {
   if (!inputFileName) {
     throw new Error("inputFileName is not defined!!!");
   }
   if (!outputFileName) {
     throw new Error("outputFileName is not defined!!!");
   }
-  csvToJson.generateJsonFileFromCsv(inputFileName, outputFileName);
+  csvToJson.generate(inputFileName, outputFileName);
 };
 
 exports.getJsonFromCsv = function(inputFileName) {
@@ -99,5 +99,5 @@ exports.csvStringToJson = function(csvString) {
 };
 
 exports.jsonToCsv = function(inputFileName, outputFileName) {
-  csvToJson.generateJsonFileFromCsv(inputFileName, outputFileName);
+  csvToJson.generate(inputFileName, outputFileName);
 };

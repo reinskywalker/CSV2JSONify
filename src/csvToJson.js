@@ -43,7 +43,7 @@ class CsvToJson {
     return this;
   }
 
-  generateJsonFileFromCsv(fileInputName, fileOutputName) {
+  generate(fileInputName, fileOutputName) {
     let jsonStringified = this.getJsonFromCsvStringified(fileInputName);
     SetFile.writeFile(jsonStringified, fileOutputName);
   }

@@ -70,7 +70,7 @@ declare module 'CSV2JSONify' {
      * @param {outputFileName} path/filename
      *
      */
-    generateJsonFileFromCsv(
+    generate(
       inputFileName: string,
       outputFileName: string,
     ): void;
@@ -89,7 +89,7 @@ declare module 'CSV2JSONify' {
      * @param {inputFileName} path/filename
      * @param {outputFileName} path/filename
      *
-     * @deprecated Use generateJsonFileFromCsv()
+     * @deprecated Use generate()
      */
     jsonToCsv(inputFileName: string, outputFileName: string): void;
   }
