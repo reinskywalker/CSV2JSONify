@@ -1,6 +1,6 @@
 {
   "name": "csv2jsonify",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "CSV to JSON converter",
   "main": "index.js",
   "types": "index.d.ts",
