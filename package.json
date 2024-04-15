@@ -1,0 +1,29 @@
+{
+  "name": "csv2jsonify",
+  "version": "1.0.0",
+  "description": "CSV to JSON converter",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reinskywalker/CSVtoJSON.git"
+  },
+  "keywords": [
+    "csvtojson",
+    "converter",
+    "json",
+    "parser"
+  ],
+  "author": "reinskywalker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reinskywalker/CSVtoJSON/issues"
+  },
+  "homepage": "https://github.com/reinskywalker/CSVtoJSON#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
