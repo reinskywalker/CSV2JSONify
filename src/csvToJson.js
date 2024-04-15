@@ -1,8 +1,8 @@
 "use strict";
 
-let SetFile = require("././util/setFile");
-let SetStrings = require("././util/setStrings");
-let setJsons = require("././util/setJsons");
+let SetFile = require("./util/setFile");
+let SetStrings = require("./util/setStrings");
+let setJsons = require("./util/setJson");
 
 const newLine = /\r?\n/;
 const defaultFieldDelimiter = ";";
