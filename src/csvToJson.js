@@ -154,20 +154,25 @@ class CsvToJson {
     }
     return false;
   }
-
+  
   validateInputConfig(){
-  	if(this.isSupportQuotedField) {
-  	 	if(this.getFieldDelimiter() === '"'){
-  	 		throw new Error('When SupportQuotedFields is enabled you cannot defined the field delimiter as quote -> ["]');
-  	 	}
-  	 	if(this.parseSubArraySeparator === '"'){
-  	 		throw new Error('When SupportQuotedFields is enabled you cannot defined the field parseSubArraySeparator as quote -> ["]');
-  	 	}
-  	 	if(this.parseSubArrayDelimiter === '"'){
-  	 		throw new Error('When SupportQuotedFields is enabled you cannot defined the field parseSubArrayDelimiter as quote -> ["]');
-  	 	}
-  	}
+    if(this.isSupportQuotedField) {
+      const fieldDelimiter = this.getFieldDelimiter();
+      const subArraySeparator = this.parseSubArraySeparator;
+      const subArrayDelimiter = this.parseSubArrayDelimiter;
+  
+      if(fieldDelimiter === '"'){
+        throw new Error('The field delimiter cannot be a double quote (") when SupportQuotedFields is enabled.');
+      }
+      if(subArraySeparator === '"'){
+        throw new Error('The field parseSubArraySeparator cannot be a double quote (") when SupportQuotedFields is enabled.');
+      }
+      if(subArrayDelimiter === '"'){
+        throw new Error('The field parseSubArrayDelimiter cannot be a double quote (") when SupportQuotedFields is enabled.');
+      }
+    }
   }
+  
 
   hasQuotes(line) {
     return line.includes('"');
