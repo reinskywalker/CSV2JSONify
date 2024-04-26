@@ -1,36 +1,29 @@
 'use strict';
 
 class SetStrings {
-
     trimPropertyName(value) {
         return value.replace(/\s/g, '');
     }
 
     getValueFormatByType(value) {
-        if(value === undefined || value === ''){
-            return String();
+        if (!value || value === '') {
+            return '';
         }
-        //is Number
-        let isNumber = !isNaN(value);
-        if (isNumber) {
+
+        if (!isNaN(value)) {
             return Number(value);
         }
-        // is Boolean
-        if(value === "true" || value === "false"){
-            return JSON.parse(value.toLowerCase());
+
+        const lowerCaseValue = value.toLowerCase();
+        if (lowerCaseValue === 'true' || lowerCaseValue === 'false') {
+            return JSON.parse(lowerCaseValue);
         }
+
         return String(value);
     }
 
     hasContent(values) {
-        if (values.length > 0) {
-            for (let i = 0; i < values.length; i++) {
-                if (values[i]) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return values.some(value => !!value);
     }
 }
 
