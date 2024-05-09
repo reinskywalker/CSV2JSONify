@@ -65,38 +65,40 @@ class CsvToJson {
   }
 
   csvToJson(parsedCsv) {
-  	this.validateInputConfig();
-    let lines = parsedCsv.split(newLine);
-    let fieldDelimiter = this.getFieldDelimiter();
+    this.validateInputConfig();
+    const lines = parsedCsv.split(newLine);
+    const fieldDelimiter = this.getFieldDelimiter();
     let index = this.getIndexHeader();
     let headers;
-    
-    if(this.isSupportQuotedField){
-      headers = this.split(lines[index]);
+
+    if (this.isSupportQuotedField) {
+        headers = this.split(lines[index]);
     } else {
-      headers = lines[index].split(fieldDelimiter);
-    }
-    
-    while(!SetStrings.hasContent(headers) && index <= lines.length){
-        index = index + 1;
         headers = lines[index].split(fieldDelimiter);
     }
 
-    let jsonResult = [];
-    for (let i = (index + 1); i < lines.length; i++) {
+    while (!SetStrings.hasContent(headers) && index < lines.length - 1) {
+        index++;
+        headers = this.isSupportQuotedField
+            ? this.split(lines[index])
+            : lines[index].split(fieldDelimiter);
+    }
+
+    const jsonResult = [];
+    for (let i = index + 1; i < lines.length; i++) {
         let currentLine;
-        if(this.isSupportQuotedField){
+        if (this.isSupportQuotedField) {
             currentLine = this.split(lines[i]);
-        }
-        else{
+        } else {
             currentLine = lines[i].split(fieldDelimiter);
         }
         if (SetStrings.hasContent(currentLine)) {
             jsonResult.push(this.buildJsonResult(headers, currentLine));
         }
-       }
+    }
     return jsonResult;
-  }
+}
+
 
   getFieldDelimiter() {
     if (this.delimiter) {
