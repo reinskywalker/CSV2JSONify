@@ -25,15 +25,19 @@ class FileHandler {
      * @param {string} fileOutputName - The name of the output file.
      */
     writeFile(json, fileOutputName) {
-        let getDuration = null;
+        console.log('\x1b[32m', 'Conversion started!', '\x1b[0m');
+
         const start = performance.now();
-        fs.writeFile(fileOutputName, json, function (err) {
+
+        fs.writeFile(fileOutputName, json, (err) => {
             const end = performance.now();
-            getDuration = `${(end - start).toFixed(2)} ms`;;
+            const duration = `${(end - start).toFixed(2)} ms`;
+
             if (err) {
-                throw err;
+                console.error('\x1b[31m', '✖️ ', `Conversion failed: ${err.message}`, '\x1b[0m');
+                throw new Error(`File write failed: ${err.message}`);
             } else {
-                console.log('\x1b[32m', '✔️ ', `Conversion successful on: ${fileOutputName} (\x1b[36m${getDuration}\x1b[0m)`, '\x1b[0m');
+                console.log('\x1b[32m', '✔️ ', `Conversion successful: ${fileOutputName} (\x1b[36m${duration}\x1b[0m)`, '\x1b[0m');
             }
         });
     }
