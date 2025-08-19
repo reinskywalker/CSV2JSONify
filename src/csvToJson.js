@@ -50,7 +50,7 @@ class CsvToJson {
 
     getJsonFromCsvStringified(fileInputName) {
         let json = this.getJsonFromCsv(fileInputName);
-        let jsonStringified = JSON.stringify(json, undefined, 1);
+        let jsonStringified = JSON.stringify(json, null, 2);
         setJsons.validateJson(jsonStringified);
         return jsonStringified;
     }
